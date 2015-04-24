@@ -1,0 +1,137 @@
+{% extends "TroiswaBackBundle::layout.html.twig" %}
+
+{% block centrale %}
+    <div id="page-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                       Modifier un Acteur
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-dashboard"></i>  <a href="{{ path("troiswa_back_admin") }}">Accueil</a>
+                        </li>
+
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+            {% for message in app.session.flashbag.get("success_acteur") %}
+                 <br> <p class="alert alert-success">{{ message }}</p>
+            {% endfor %}
+
+                <div class="col-lg-4">
+
+{#
+                    {{ form(formActeur) }}
+                    <div class="table-responsive">
+
+          'choice', array(
+                'choices'   => array(0 => 'Homme', 1 => 'Femme'),
+                'expanded'  => true,
+#}
+                    {{ form_start(formActeur) }}
+                        {{ form_errors(formActeur.prenom) }}
+                        <div class="form-group">
+                        {{ form_label(formActeur.sexe.0) }}
+                        {{ form_widget(formActeur.sexe.0) }}
+                        {{ form_label(formActeur.sexe.1) }}
+                        {{ form_widget(formActeur.sexe.1) }}
+                        </div>
+                        {{ form_label(formActeur.prenom) }}
+                        {{ form_widget(
+                        formActeur.prenom, {
+                            "attr": {
+                                "class":"form-control input-md",
+                                "type":"text",
+                                "placeholder":"Prenom"
+                            }
+                        }
+                        ) }}
+
+                       {{ form_label(formActeur.nom) }}
+                       {{ form_widget(
+                        formActeur.nom, {
+                            "attr": {
+                                "class":"form-control input-md",
+                                "type":"text",
+                                "placeholder":"Nom"
+                            }
+                        }
+                        ) }}
+
+                       {{ form_label(formActeur.dateNaissance) }}
+                       {{ form_widget(
+                        formActeur.dateNaissance, {
+                            "attr": {
+                                "class":"form-control input-md",
+                                "type":"text",
+                                "placeholder":"Date de Naissance"
+                            }
+                        }
+                        ) }}
+
+                       {{ form_label(formActeur.ville) }}
+                       {{ form_widget(
+                        formActeur.ville, {
+                            "attr": {
+                                "class":"form-control input-md",
+                                "type":"text",
+                                "placeholder":"Ville"
+                            }
+                        }
+                        ) }}
+
+                          {{ form_label(formActeur.biographie) }}
+                        {{ form_widget(
+                        formActeur.biographie, {
+                            "attr": {
+                                "class":"form-control input-md",
+                                "type":"textarea",
+                                "placeholder":"biographie"
+                            }
+                        }
+                        ) }}
+
+                      {{ form_label(formActeur.fichier) }}
+                      {{ form_widget(
+                        formActeur.fichier, {
+                            "attr": {
+                                "class":"form-control input-md",
+                                "type":"file",
+                                "placeholder":"Image"
+                            }
+                        }
+                        ) }}
+                                                                        <br>
+                                                                      {{ form_widget(
+                        formActeur.modifier, {
+                            "attr": {
+                                "class":"btn btn-danger btn-sm",
+                                "type":"submit"
+
+                            }
+                        }
+                        ) }}
+
+                                        {{ form_end(formActeur) }}
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- /#page-wrapper -->
+
+</div> {% endblock %}

@@ -1,0 +1,83 @@
+{% extends "TroiswaBackBundle::layout.html.twig" %}
+
+{% block centrale %}
+    <div id="page-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        Tous Les Acteurs
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-dashboard"></i>  <a href="{{ path("troiswa_back_admin") }}">Accueil</a>
+                        </li>
+
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <h2>Tableau d'Acteurs</h2>
+                    <a href="{{ path("troiswa_back_ajout_acteur") }}" class="btn btn-success">Ajouter un Acteur</a>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>photo</th>
+                                <th>Prenom</th>
+                                <th>Nom</th>
+                                <th>Sexe</th>
+                                <th>date de naissance</th>
+                                <th>Actions</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for keys,value in tousLesActeurs %}
+                            <tr>
+                                <td><img class="img-thumbnail" width="100px" src="{{ asset(value.displayImage) }}"></td>
+                                <td>{{ value.prenom }}</td>
+                                <td>{{ value.nom }}</td>
+                                <td>
+                                    {% if value.sexe  == 0 %}
+                                        Homme
+                                    {% endif %}
+                                    {% if value.sexe == 1 %}
+                                        Femme
+                                    {% endif %}
+                                </td>
+                                <td>{{ value.dateNaissance|date("d/m/Y") }}</td>
+                                <td>
+                                    <a href="{{ path("troiswa_back_info_acteur",{"id":value.id}) }}" class="btn btn-success">Voir</a>
+                                    <a href="{{ path("troiswa_back_acteur_modifier",{"id":value.id}) }}" class="btn btn-info">Modifier</a>
+
+                                    <a href="{{ path("troiswa_back_acteur_supprimer",{"id":value.id}) }}" class="btn btn-danger">Supprimer</a>
+                                </td>
+
+
+                            </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- /#page-wrapper -->
+
+</div> {% endblock %}

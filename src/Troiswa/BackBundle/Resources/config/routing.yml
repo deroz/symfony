@@ -1,0 +1,62 @@
+troiswa_back_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: TroiswaBackBundle:Default:index }
+
+
+
+troiswa_back_test: #nom unique de la route
+    path:    /essai #url de la page
+    defaults: { _controller: TroiswaBackBundle:Default:try}
+                                #namespace, controller, méthode controller
+
+troiswa_back_admin:
+    path:   /admin
+    defaults:  {_controller: TroiswaBackBundle:Main:dashBoard}
+
+troiswa_back_acteur:
+     path:   /admin/acteur
+     defaults:  {_controller: TroiswaBackBundle:Acteur:routeActeur}
+
+troiswa_back_ajout_acteur:
+       path:   /admin/acteur/ajout
+       defaults:  {_controller: TroiswaBackBundle:Acteur:ajout}
+
+troiswa_back_acteur_modifier:
+        path:   /admin/acteur/modifier/{id}
+        defaults:  {_controller: TroiswaBackBundle:Acteur:modifier}
+
+troiswa_back_acteur_supprimer:
+        path:   /admin/acteur/supprimer/{id}
+        defaults:  {_controller: TroiswaBackBundle:Acteur:supprimer}
+
+troiswa_back_info_acteur:
+      path:   /admin/acteur/{id} #variable de routing
+      defaults:  {_controller: TroiswaBackBundle:Acteur:information}
+
+troiswa_back_film:
+      path:   /admin/film
+      defaults:  {_controller: TroiswaBackBundle:Film:routeFilm}
+
+troiswa_back_info_film:
+      path:   /admin/film/{id}  #variable routing
+      defaults:  {_controller: TroiswaBackBundle:Film:information}
+      requirements: #restriction pour que l'id ne soit qu'un nombre
+        id: \d+  #uniquement des chiffres de 1 à infini
+
+troiswa_back_genre:
+       path:   /admin/genre
+       defaults:  {_controller: TroiswaBackBundle:Genre:all}
+
+troiswa_back_create_genre:
+       path:   /admin/genre/creation
+       defaults:  {_controller: TroiswaBackBundle:Genre:creer}
+
+troiswa_back_genre_modifier:
+        path:   /admin/genre/modifier/{id}
+        defaults:  {_controller: TroiswaBackBundle:Genre:modifier}
+
+troiswa_back_genre_supprimer:
+        path:   /admin/genre/supprimer/{id}
+        defaults:  {_controller: TroiswaBackBundle:Genre:supprimer}
+
+

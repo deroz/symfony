@@ -1,0 +1,73 @@
+{% extends "TroiswaBackBundle::layout.html.twig" %}
+
+{% block centrale %}
+    <div id="page-wrapper">
+
+        <div class="container-fluid">
+
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        {{ acteur.prenom }} {{ acteur.nom }}
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li>
+                            <i class="fa fa-dashboard"></i>  <a href="{{ path("troiswa_back_admin") }}">Super Acteur</a>
+                        </li>
+
+                    </ol>
+                </div>
+            </div>
+            <!-- /.row -->
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Fiche Acteur</h2>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>Prenom</th>
+                                <th>Nom</th>
+                                <th>Sexe</th>
+                                <th>Date de Naissance</th>
+
+
+                            </tr>
+                            </thead>
+                            <tbody>
+
+    <tr>
+            
+        <td>{{ acteur.prenom }}</td>
+        <td>{{ acteur.nom }}</td>
+        <td>
+            {% if acteur.sexe  == 0 %}
+                Homme
+            {% endif %}
+            {% if acteur.sexe == 1 %}
+                Femme
+            {% endif %}
+        </td>
+        <td>{{ acteur.dateNaissance|date("d/m/Y") }}</td>
+
+
+    </tr>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+        <!-- /.container-fluid -->
+        <img class="img-thumbnail" width="400px" src="{{ asset(acteur.displayImage) }}">
+    </div>
+    <!-- /#page-wrapper -->
+
+</div> {% endblock %}
